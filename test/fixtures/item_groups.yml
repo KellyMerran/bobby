@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  client_id: 1
+  begin_date: 2013-10-14 16:28:57
+  end_date: 
+
+two:
+  client_id: 1
+  begin_date: 2013-10-14 16:28:57
+  end_date: 

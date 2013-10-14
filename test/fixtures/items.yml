@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  item_group_id: 1
+  client_id: 1
+  brand: MyString
+  product: MyString
+  reference: MyString
+  buy_price: 1
+  sell_price: 1
+  date_sold: 2013-10-14 16:28:17
+  payment: false
+
+two:
+  item_group_id: 1
+  client_id: 1
+  brand: MyString
+  product: MyString
+  reference: MyString
+  buy_price: 1
+  sell_price: 1
+  date_sold: 2013-10-14 16:28:17
+  payment: false

@@ -1,0 +1,29 @@
+- @item_groups.each do |group|
+  .row-fluid
+    .span4
+      %h4
+        = group.client.full_name
+      = group.client.email
+      = group.client.phone
+    .span3
+      %h6 Date de dépôt
+      = group.begin_date
+    .span3
+      %h6 Date fin de dépôt
+      = group.end_date
+  %hr
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Brand
+        %th Product
+        %th Reference
+    - group.items.each do |item|  
+      %tr
+        %td
+          = item.brand
+        %td  
+          = item.product
+        %td  
+          = item.reference
+

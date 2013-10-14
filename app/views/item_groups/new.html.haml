@@ -1,0 +1,50 @@
+= form_for [@client, @item_group], url: item_groups_path, method: :post do |f|
+  %h3 Customer Info
+  = f.fields_for :client do |client|
+    .row-fluid
+      .span6
+        = client.label :first_name
+        = client.text_field :first_name
+      .span6
+        = client.label :last_name
+        = client.text_field :last_name
+    .row-fluid
+      .span6
+        = client.label :email
+        = client.text_field :email
+      .span6
+        = client.label :phone
+        = client.text_field :phone
+  = f.fields_for :item_group do |item_group|
+    .row-fluid
+      .span6
+        = item_group.label :begin_date
+        = item_group.text_field :begin_date, class: 'datepicker'
+      .span6
+        = item_group.label :end_date
+        = item_group.text_field :end_date, class: 'datepicker'
+  %h3 Products
+  = link_to add_item_path, remote: :true, f: f, class: 'pull-right' do
+    %icon.icon-plus-sign.icon-2x.add-item.no-decoration
+  = f.fields_for :item do |item|
+    / .row-fluid
+    /   .span2
+    /     = item.label :brand
+    /     = item.text_field :brand, class: 'input-small'
+    /   .span2
+    /     = item.label :product
+    /     = item.text_field :product, class: 'input-small'
+    /   .span2
+    /     = item.label 'reference'
+    /     = item.text_field :reference, class: 'input-small'
+    /   .span2
+    /     = item.label 'buy'
+    /     = item.text_field :buy_price, class: 'input-small'
+    = render 'item_groups/item_fields' 
+
+    / .row-fluid
+    /   .span6
+    /     = render 'item_fields', f: item
+    /   .span6
+    
+  = f.submit :class => "btn btn-large btn-success", value: "Save"
