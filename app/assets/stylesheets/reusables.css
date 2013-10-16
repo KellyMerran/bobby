@@ -1,8 +1,9 @@
 .no-decoration {
   text-decoration: none;
-  &:hover {
-  	text-decoration: none;
-  }
+}
+
+.no-direction:hover {
+  text-decoration: none;
 }
 
 .center {
