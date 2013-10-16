@@ -1,11 +1,19 @@
 BobbyStore::Application.routes.draw do
   
   devise_for :users
-  root 'home#index'
+  
+  # root to: "item_groups#index"
+
+  devise_scope :user do
+    root to: "item_groups#index"
+  end
 
   resources :clients, only: [:new, :create, :index]
+  get 'clients/:client_id/terms' => 'clients#terms', as: 'terms_conditions'
+  get 'clients/:client_id/terms_approval' => 'clients#terms_approval', as: 'terms_approval'
 
   resources :item_groups, only: [:new, :create, :index]
+  resources :items, only: [:show, :update]
   get 'item_groups/add_item' => 'item_groups#add_item', as: 'add_item'
 
   # The priority is based upon order of creation: first created -> highest priority.

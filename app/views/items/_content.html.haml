@@ -1,0 +1,44 @@
+#showModal.modal.hide.fade{"aria-hidden" => "true", "aria-labelledby" => "showModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+    %h3#showModalLabel
+      = item.product + ' ' + 'de' + ' ' + item.client.full_name
+  .modal-body
+    .row-fluid
+      .span3
+        %h4 Marque
+        = item.brand
+      .span3  
+        %h4 Produit
+        = item.product
+      .span3  
+        %h4 Reference
+        = item.reference
+      .span3
+        %h4 Prix d'achat
+        = item.buy_price
+    %hr
+    %h3 Changer status
+    = form_for @item do |f|
+      .row-fluid
+        .span4
+          %h4 Sell price
+          = f.text_field :sell_price, class: 'input-small'
+        .span4
+          %h4 Date sold
+          = f.text_field :date_sold, class: 'datepicker input-small'
+        .span4
+          %h4 Payment
+          .row-fluid
+            .span6
+              = 'true'
+              %br
+              = f.radio_button :payment, true
+            .span6
+              = 'false'
+              %br
+              = f.radio_button :payment, false
+      %br
+      %button.btn.btn-large{"aria-hidden" => "true", "data-dismiss" => "modal"} Close    
+      = f.submit class: "btn btn-large btn-success", value: "Save"
+    

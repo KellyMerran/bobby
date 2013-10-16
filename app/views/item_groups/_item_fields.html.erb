@@ -1,20 +1,21 @@
+<% rand_number = rand(999) %>
 <fieldset class='item-form'>
   <div class="row-fluid">
     <div class="span2">
-      <label for="item_group_item_brand">Brand</label>
-      <input class="input-small" id="item_group_item_brand" name="item_group[item][brand]" type="text">
+      <label for="item_group_item_brand">Marque</label>
+      <input class="input-small" id="item_group_item_brand" name="item_group[items][item_<%= rand_number %>][brand]" type="text">
     </div>
     <div class="span2">
-      <label for="item_group_item_product">Product</label>
-      <input class="input-small" id="item_group_item_product" name="item_group[item][product]" type="text">
+      <label for="item_group_item_product">Produit</label>
+      <input class="input-small" id="item_group_item_product" name="item_group[items][item_<%= rand_number %>][product]" type="text">
     </div>
     <div class="span2">
-      <label for="item_group_item_reference">Reference</label>
-      <input class="input-small" id="item_group_item_reference" name="item_group[item][reference]" type="text">
+      <label for="item_group_item_reference">Référence</label>
+      <input class="input-small" id="item_group_item_reference" name="item_group[items][item_<%= rand_number %>][reference]" type="text">
     </div>
     <div class="span2">
-      <label for="item_group_item_buy">Buy</label>
-      <input class="input-small" id="item_group_item_buy_price" name="item_group[item][buy_price]" type="text">
+      <label for="item_group_item_buy">Prix d'achat</label>
+      <input class="input-small" id="item_group_item_buy_price" name="item_group[items][item_<%= rand_number %>][buy_price]" type="text">
     </div>
   </div>
 </fieldset>

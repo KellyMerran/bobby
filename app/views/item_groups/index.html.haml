@@ -1,29 +1,54 @@
-- @item_groups.each do |group|
+.header
   .row-fluid
-    .span4
-      %h4
-        = group.client.full_name
-      = group.client.email
-      = group.client.phone
-    .span3
-      %h6 Date de dépôt
-      = group.begin_date
-    .span3
-      %h6 Date fin de dépôt
-      = group.end_date
-  %hr
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Brand
-        %th Product
-        %th Reference
-    - group.items.each do |item|  
-      %tr
-        %td
-          = item.brand
-        %td  
-          = item.product
-        %td  
-          = item.reference
+    .span6
+      %h1 Bobby SecondHand
+    .span6
+    - if current_user.admin?
+      = form_tag item_groups_path, class: 'pull-right pull-down', method: :get do
+        = text_field_tag :client_search, params[:search], data: { keybinding: '/' }
+        = submit_tag "Search", class: "btn btn-primary"
 
+.distance-top-30
+  - @item_groups.each_with_index do |group, index|
+    .row-fluid
+      .span4
+        %h4
+          = group.client.full_name
+        = group.client.email
+        %br
+        = group.client.phone
+      .span3
+        %h6 Date de dépôt
+        = group.begin_date
+      .span3
+        %h6 Date fin de dépôt
+        = group.end_date
+    %hr
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Brand
+          %th Product
+          %th Reference
+          %th Buy price
+          %th Sell price
+          %th Payment
+      - group.items.each do |item|  
+        %tr{class: ('highlight-green' if item.sold?)}
+          %td
+            = item.brand
+          %td  
+            = item.product
+          %td  
+            = item.reference
+          %td  
+            = item.buy_price
+          %td  
+            = item.sell_price
+          %td
+            = item.payment
+          - if current_user.admin?  
+            %td
+              = link_to '', item_path(id: item.id), data: {toggle: 'modal', target: "#showModal"}, 'data-keyboard' => true, remote: true, class: 'delete-pay-fail icon-book icon-2x no-decoration'
+    - if @item_groups.length > (index + 1)
+      %hr.black

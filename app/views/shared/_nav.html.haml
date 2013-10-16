@@ -1,0 +1,14 @@
+.navbar
+  .navbar-inner
+    %a.brand{href: "#"} Bobby
+    %ul.nav
+      %li.active
+        %a{href: "#"} Home
+      - if current_user && current_user.admin?
+        %li
+          = link_to 'Add New', new_item_group_path
+      - if user_signed_in?
+        %li
+          = link_to 'Sign Out', destroy_user_session_path, method: :delete
+
+ 

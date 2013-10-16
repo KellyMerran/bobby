@@ -5,5 +5,20 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :item_groups
   has_many :items
+  belongs_to :client
+
+  before_validation :set_generic_password
+
+  def password_required?
+    false
+  end 
+
+  def set_generic_password
+  	self.password = 'password'
+  end
+
+  def admin?
+    role == 'admin'
+  end
   
 end
