@@ -9,3 +9,7 @@
 .table-striped tbody tr.highlight-green:nth-child(odd) td {
   background: green !important;
 }
+
+.client-search {
+  margin-bottom: 10px;
+}

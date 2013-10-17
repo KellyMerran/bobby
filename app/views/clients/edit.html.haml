@@ -1,0 +1,12 @@
+%h1 Update Client
+= form_for @client do |f|
+  = f.label :last_name, 'Nom'
+  = f.text_field :last_name
+  = f.label :first_name, 'Prénom'
+  = f.text_field :first_name
+  = f.label :email
+  = f.text_field :email
+  = f.label :phone
+  = f.text_field :phone
+  %br
+  = f.submit :class => "btn btn-large btn-success", value: "Save"

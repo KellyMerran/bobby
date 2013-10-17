@@ -5,16 +5,17 @@ BobbyStore::Application.routes.draw do
   # root to: "item_groups#index"
 
   devise_scope :user do
-    root to: "item_groups#index"
+    root to: "item_groups#index" 
   end
 
-  resources :clients, only: [:new, :create, :index]
+  resources :clients, only: [:new, :create, :index, :edit, :update]
   get 'clients/:client_id/terms' => 'clients#terms', as: 'terms_conditions'
   get 'clients/:client_id/terms_approval' => 'clients#terms_approval', as: 'terms_approval'
 
   resources :item_groups, only: [:new, :create, :index]
   resources :items, only: [:show, :update]
   get 'item_groups/add_item' => 'item_groups#add_item', as: 'add_item'
+  get 'clients/:client_id/item_groups/new' => 'item_groups#add_group_only', as: 'add_group_to_client'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

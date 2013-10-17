@@ -3,26 +3,31 @@
     .span6
       %h1 Bobby SecondHand
     .span6
-    - if current_user.admin?
-      = form_tag item_groups_path, class: 'pull-right pull-down', method: :get do
-        = text_field_tag :client_search, params[:search], data: { keybinding: '/' }
-        = submit_tag "Search", class: "btn btn-primary"
+      - if current_user.admin?
+        = form_tag item_groups_path, class: 'pull-right pull-down', method: :get do
+          = text_field_tag :client_search, params[:search], data: { keybinding: '/' }
+          = submit_tag "Search", class: "btn btn-primary client-search"
 
 .distance-top-30
   - @item_groups.each_with_index do |group, index|
     .row-fluid
       .span4
-        %h4
-          = group.client.full_name
-        = group.client.email
-        %br
-        = group.client.phone
+        - if index == 0
+          %h4
+            = group.client.full_name
+
+            %span.badge
+              = group.client.number_of_groups
+          = group.client.email
+          %br
+          = group.client.phone
       .span3
         %h6 Date de dépôt
         = group.begin_date
       .span3
         %h6 Date fin de dépôt
         = group.end_date
+      .span2
     %hr
     %table.table.table-striped
       %thead

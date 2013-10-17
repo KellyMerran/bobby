@@ -7,7 +7,6 @@ class ItemGroupsController < ApplicationController
     else
       @item_groups = ItemGroup.search_customer(params[:client_search])
     end
-
   end
 
   def new
@@ -20,13 +19,22 @@ class ItemGroupsController < ApplicationController
   	end
   end
 
+  def add_group_only
+    @client = Client.find(params[:client_id])
+    @item_group = ItemGroup.new
+  end
+
   def create
-  	@client = Client.create(client_params)
+    if params[:item_group][:client_id]
+      @client = Client.find(params[:item_group][:client_id]) 
+    else
+      @client = Client.create(client_params)
+    end
   	@item_group = @client.item_groups.create(item_group_params)  	
     params[:item_group][:items].each do |k, v|
       @item_group.items.create(item_params(k).merge(client_id: @client.id, payment: false))
     end
-    redirect_to item_groups_path
+    redirect_to clients_path
   end
 
   def add_item

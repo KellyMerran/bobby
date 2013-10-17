@@ -1,0 +1,67 @@
+.header
+  .row-fluid
+    .span6
+      %h1 Bobby SecondHand
+    .span6
+      - if current_user.admin?
+        = form_tag clients_path, class: 'pull-right pull-down', method: :get do
+          = text_field_tag :client_search, params[:search], data: { keybinding: '/' }
+          = submit_tag "Search", class: "btn btn-primary client-search"
+
+.distance-top-30
+  - @clients.each_with_index do |client, index|
+    - client.item_groups.each_with_index do |group, i|
+      .row-fluid
+        .span4
+          - if i == 0
+            %h4
+              = client.full_name
+
+              %span.badge
+                = client.number_of_groups
+            = client.email
+            %br
+            = client.phone
+        .span3
+          %h6 Date de dépôt
+          = group.begin_date
+        .span3
+          %h6 Date fin de dépôt
+          = group.end_date
+        .span2
+          - if i == 0
+            %h6 Menu
+            = link_to 'Update customer', edit_client_path(id: group.client.id)
+            = link_to 'Ajoute dépôt', add_group_to_client_path(client_id: group.client.id)
+        %hr
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Brand
+              %th Product
+              %th Reference
+              %th Buy price
+              %th Sell price
+              %th Payment
+          - group.items.each do |item|  
+            %tr{class: ('highlight-green' if item.sold?)}
+              %td
+                = item.brand
+              %td  
+                = item.product
+              %td  
+                = item.reference
+              %td  
+                = item.buy_price
+              %td  
+                = item.sell_price
+              %td
+                = item.payment
+              - if current_user.admin?  
+                %td
+                  = link_to '', item_path(id: item.id), data: {toggle: 'modal', target: "#showModal"}, 'data-keyboard' => true, remote: true, class: 'delete-pay-fail icon-book icon-2x no-decoration'
+
+    - if @clients.length > (index + 1)
+      %hr.black
+
+= will_paginate @clients, renderer: BootstrapPagination::Rails
