@@ -38,7 +38,7 @@ class ClientsController < ApplicationController
   def terms_approval
   	client = Client.find(params[:client_id])
   	approve_terms(client)
-  	redirect_to clients_path
+  	redirect_to item_groups_path
   end
 
   private

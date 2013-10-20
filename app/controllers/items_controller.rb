@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
   def update
     item = Item.find(params[:id])
     item.update_attributes(item_params)
-    redirect_to item_groups_path
+    redirect_to clients_path
   end
 
   private
