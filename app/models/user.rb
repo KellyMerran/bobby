@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   has_many :item_groups
   has_many :items
   belongs_to :client
-
   before_validation :set_generic_password
 
   def password_required?
@@ -20,5 +19,5 @@ class User < ActiveRecord::Base
   def admin?
     role == 'admin'
   end
-  
+
 end

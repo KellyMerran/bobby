@@ -4,8 +4,12 @@ class Client < ActiveRecord::Base
   has_many :item_groups
   has_many :items
   has_one :user
+  
+  # pg_search_scope :search_customer, :against => [:first_name, :last_name]
 
-  pg_search_scope :search_customer, :against => [:first_name, :last_name]
+  pg_search_scope :search_customer, associated_against: {
+    items: [:reference] 
+  }
 
   after_save :create_user_account
 

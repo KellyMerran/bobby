@@ -15,6 +15,30 @@ class ItemsController < ApplicationController
     redirect_to clients_path(client_search: params[:item][:client_search])
   end
 
+  def delete_item
+    item = Item.find(params[:item_id])
+    item.delete
+    redirect_to clients_path(client_search: params[:client_search])
+  end
+
+  def sell
+    item = Item.find(params[:item_id])
+    item.sell
+    redirect_to clients_path(client_search: params[:client_search])
+  end
+
+  def unsell
+    item = Item.find(params[:item_id])
+    item.unsell
+    redirect_to clients_path(client_search: params[:client_search])
+  end
+
+  def mark_as_paid
+    item = Item.find(params[:item_id])
+    item.mark_as_paid
+    redirect_to clients_path(client_search: params[:client_search])
+  end
+
   private
 
   def item_params

@@ -11,10 +11,19 @@ BobbyStore::Application.routes.draw do
   resources :clients, only: [:new, :create, :index, :edit, :update]
   get 'clients/:client_id/terms' => 'clients#terms', as: 'terms_conditions'
   get 'clients/:client_id/terms_approval' => 'clients#terms_approval', as: 'terms_approval'
+  delete 'clients/:client_id/delete_client' => 'clients#delete_client', as: 'delete_client'
 
   resources :item_groups, only: [:new, :create, :index]
+
   resources :items, only: [:show, :update]
+  post 'items/:item_id/sell' => 'items#sell', as: 'sell_item'
+  post 'items/:item_id/unsell' => 'items#unsell', as: 'unsell_item'
+  post 'items/:item_id/mark_as_paid' => 'items#mark_as_paid', as: 'mark_item_payment'
+
+  delete 'items/:item_id/delete_item' => 'items#delete_item', as: 'delete_item'
+  
   get 'item_groups/add_item' => 'item_groups#add_item', as: 'add_item'
+  post 'item_groups/:id/delete_item_group' => 'item_groups#delete_item_group', as: 'delete_item_group'
   get 'clients/:client_id/item_groups/new' => 'item_groups#add_group_only', as: 'add_group_to_client'
 
   # The priority is based upon order of creation: first created -> highest priority.

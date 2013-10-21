@@ -3,11 +3,19 @@
 }
 
 .table-striped tbody tr.highlight-green {
-  background: green !important;
+  background: #7F9A65 !important;
 }
 
 .table-striped tbody tr.highlight-green:nth-child(odd) td {
-  background: green !important;
+  background: #7F9A65 !important;
+}
+
+.table-striped tbody tr.highlight-purple {
+  background: #BDA0CB !important;
+}
+
+.table-striped tbody tr.highlight-purple:nth-child(odd) td {
+  background: #BDA0CB !important;
 }
 
 .client-search {

@@ -32,7 +32,7 @@ class ItemGroupsController < ApplicationController
     end
   	@item_group = @client.item_groups.create(item_group_params)  	
     params[:item_group][:items].each do |k, v|
-      @item_group.items.create(item_params(k).merge(client_id: @client.id, payment: false))
+      @item_group.items.create(item_params(k).merge(client_id: @client.id))
     end
     redirect_to clients_path
   end
@@ -41,6 +41,12 @@ class ItemGroupsController < ApplicationController
     respond_to do |format|
       format.js { 'add_item.js.erb' }
     end
+  end
+
+  def delete_item_group
+    item = ItemGroup.find(params[:id])
+    item.delete
+    redirect_to clients_path
   end
 
   private
@@ -54,7 +60,7 @@ class ItemGroupsController < ApplicationController
   end
 
   def item_params(key)
-    params[:item_group][:items][key].permit(:brand, :product, :reference, :buy_price)
+    params[:item_group][:items][key].permit(:brand, :product, :reference, :buy_price, :sell_price)
   end
 
 end

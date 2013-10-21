@@ -42,6 +42,14 @@ class ClientsController < ApplicationController
   	redirect_to item_groups_path
   end
 
+  def delete_client
+    client = Client.find(params[:client_id])
+    client.item_groups.delete_all
+    client.user.delete
+    client.delete
+    redirect_to clients_path
+  end
+
   private
 
   def approve_terms(client)

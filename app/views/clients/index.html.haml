@@ -13,39 +13,62 @@
     - @clients.each_with_index do |client, index|
       - client.item_groups.each_with_index do |group, i|
         .row-fluid
-          .span4
+          .span3
             - if i == 0
               %h4
                 = client.full_name
-
                 %span.badge
                   = client.number_of_groups
               = client.email
               %br
               = client.phone
-          .span3
-            %h6 Date de dépôt
-            = group.begin_date
-          .span3
-            %h6 Date fin de dépôt
-            = group.end_date
-          .span2
-            - if i == 0
-              %h6 Menu
+              %br
+              
+          .span7
+
+          .span2.pull-right
+            - if i < 1
+              %h4 Menu
               = link_to 'Update customer', edit_client_path(id: group.client.id)
+              %br
               = link_to 'Ajoute dépôt', add_group_to_client_path(client_id: group.client.id)
-          %hr
+              %br
+              = link_to 'Delete Customer', delete_client_path(client_id: client.id), method: :delete
+            
+        %hr
+
           %table.table.table-striped
             %thead
+              %tr
+                %td
+                  %h3
+                    = i +1
+
+                %td
+                  %h6 Date de dépôt
+                  = group.begin_date
+                %td
+                  %h6 Date fin de dépôt
+                  = group.end_date
+                %td
+                %td
+                %td
+                %td
+                  = link_to 'Supprimer dépôt', delete_item_group_path(id: group.id), method: :post
               %tr
                 %th Brand
                 %th Product
                 %th Reference
                 %th Buy price
                 %th Sell price
-                %th Payment
+                %th Action
+                %th Delete
             - group.items.each do |item|  
-              %tr{class: ('highlight-green' if item.sold?)}
+              - if item.sold?
+                - highlight_color = item.sold_and_paid ? 'highlight-purple' : 'highlight-green'
+              - else  
+                - highlight_color = nil              
+              %tr{class: (highlight_color)} 
                 %td
                   = item.brand
                 %td  
@@ -57,11 +80,15 @@
                 %td  
                   = item.sell_price
                 %td
-                  = item.payment
-                - if current_user.admin?  
-                  %td
-                    = link_to '', item_path(id: item.id, client_search: @search ), data: {toggle: 'modal', target: "#showModal"}, 'data-keyboard' => true, remote: true, class: 'delete-pay-fail icon-book icon-2x no-decoration'
-      - if @clients.length > (index + 1)
-        %hr.black
+                  - unless item.sold?                  
+                    = link_to 'vendu', sell_item_path(item_id: item.id, client_search: @search), method: :post
+                %td
+                  - unless item.payment || !item.sold?
+                    = link_to 'paiment recu', mark_item_payment_path(item_id: item.id, client_search: @search), method: :post
+                %td
+                  = link_to 'X', delete_item_path(item_id: item.id), method: :delete
+                  / = link_to '', item_path(id: item.id, client_search: @search ), data: {toggle: 'modal', target: "#showModal"}, 'data-keyboard' => true, remote: true, class: 'delete-pay-fail icon-book icon-2x no-decoration'
+        - if @clients.length > (index + 1)
+          %hr.black
 
 = will_paginate @clients, renderer: BootstrapPagination::Rails if @clients
