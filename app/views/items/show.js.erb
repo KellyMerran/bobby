@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('.wrapper').append("<%= escape_javascript("#{render :partial => 'content', locals: {item: @item}}").html_safe %>");
+  $('.wrapper').append("<%= escape_javascript("#{render :partial => 'content', locals: {item: @item, search: @search}}").html_safe %>");
   $('#showModal').modal('show');
   $('.datepicker').datepicker({
     format: 'dd-mm-yyyy'

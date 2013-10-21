@@ -20,6 +20,7 @@
     %hr
     %h3 Changer status
     = form_for @item do |f|
+      = f.hidden_field :client_search, value: search
       .row-fluid
         .span4
           %h4 Sell price

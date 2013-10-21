@@ -60,7 +60,7 @@
                   = item.payment
                 - if current_user.admin?  
                   %td
-                    = link_to '', item_path(id: item.id), data: {toggle: 'modal', target: "#showModal"}, 'data-keyboard' => true, remote: true, class: 'delete-pay-fail icon-book icon-2x no-decoration'
+                    = link_to '', item_path(id: item.id, client_search: @search ), data: {toggle: 'modal', target: "#showModal"}, 'data-keyboard' => true, remote: true, class: 'delete-pay-fail icon-book icon-2x no-decoration'
       - if @clients.length > (index + 1)
         %hr.black
 

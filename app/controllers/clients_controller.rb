@@ -8,6 +8,7 @@ class ClientsController < ApplicationController
     if params[:client_search].blank?
       @clients = current_user.admin? ? @clients = Client.all.paginate(page: params[:page], per_page: PER_PAGE) : @clients = current_user.client
     else
+      @search = params[:client_search]
       @clients = Client.search_customer(params[:client_search]).paginate(page: params[:page], per_page: PER_PAGE)
     end
     @clients = @clients

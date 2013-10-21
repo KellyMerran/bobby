@@ -3,15 +3,16 @@ class ItemsController < ApplicationController
     
   def show
     @item = Item.find(params[:id])
+    @search = params[:client_search] if params[:client_search]
     respond_to do |format| 
-      format.js
+      format.js 
     end
   end
 
   def update
     item = Item.find(params[:id])
     item.update_attributes(item_params)
-    redirect_to clients_path
+    redirect_to clients_path(client_search: params[:item][:client_search])
   end
 
   private
