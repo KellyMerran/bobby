@@ -18,8 +18,8 @@ class Item < ActiveRecord::Base
   	self.sold? && self.payment
   end
 
-  def mark_as_paid
-  	self.update_attributes(payment: true)
+  def mark_as_paid(method)
+  	self.update_attributes(payment: true, payment_type: method)
   end
 
 end

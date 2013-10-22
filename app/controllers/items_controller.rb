@@ -35,14 +35,14 @@ class ItemsController < ApplicationController
 
   def mark_as_paid
     item = Item.find(params[:item_id])
-    item.mark_as_paid
+    item.mark_as_paid(params[:payment_method])
     redirect_to clients_path(client_search: params[:client_search])
   end
 
   private
 
   def item_params
-    params[:item].permit(:sell_price, :date_sold, :payment)
+    params[:item].permit(:sell_price, :date_sold, :payment, :payment_type)
   end
 
 end
