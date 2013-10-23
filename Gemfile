@@ -15,7 +15,7 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-datepicker-rails'
 gem 'will_paginate-bootstrap'
-
+gem 'jquery-turbolinks'
 gem 'quiet_assets'
 
 # Use sqlite3 as the database for Active Record
