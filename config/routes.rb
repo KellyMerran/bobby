@@ -2,10 +2,8 @@ BobbyStore::Application.routes.draw do
   
   devise_for :users
   
-  # root to: "item_groups#index"
-
   devise_scope :user do
-    root to: "item_groups#index" 
+    get '/' => "home#index" 
   end
 
   resources :clients, only: [:new, :create, :index, :edit, :update]

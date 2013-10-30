@@ -24,6 +24,9 @@ class ItemsController < ApplicationController
   def sell
     item = Item.find(params[:item_id])
     item.sell
+    if item.item_group.all_sold?
+      notify_client_end_of_depot(item.client)
+    end
     redirect_to clients_path(client_search: params[:client_search])
   end
 
@@ -43,6 +46,11 @@ class ItemsController < ApplicationController
 
   def item_params
     params[:item].permit(:sell_price, :date_sold, :payment, :payment_type)
+  end
+
+  def notify_client_end_of_depot(client)
+    binding.pry
+    ClientNotifier.end_of_depot(client).deliver!
   end
 
 end

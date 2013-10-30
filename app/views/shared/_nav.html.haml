@@ -1,6 +1,6 @@
 .navbar
   .navbar-inner
-    %a.brand{href: ""} Bobby
+    %a.brand{href: "/"} Bobby
     %ul.nav
       %li.active
       - if current_user && current_user.admin?
@@ -11,5 +11,8 @@
       - if user_signed_in?
         %li
           = link_to 'Sign Out', destroy_user_session_path, method: :delete
+      - else
+        %li
+          = link_to 'Sign In', new_user_session_path
 
  
