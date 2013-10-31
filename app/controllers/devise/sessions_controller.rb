@@ -5,6 +5,7 @@ class Devise::SessionsController < DeviseController
 
   # GET /resource/sign_in
   def new
+    @no_nav = true
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
     respond_with(resource, serialize_options(resource))
@@ -51,6 +52,5 @@ class Devise::SessionsController < DeviseController
   end
 
   def present_terms
-    binding.pry
   end
 end

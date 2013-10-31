@@ -1,14 +1,18 @@
-%h1.center
+%hr/
+%h1.center.inline
   = "Welcome to Bobby"
-
+%ul.nav.nav-pills.margin-top-20.pull-right
+  %li.pull-right
+    %a.brand{href: "/users/sign_in"} Log in
+  / %li.pull-right.active
+  /   %a.brand{href: "/"} Home
 .container-narrow
+  / .jumbotron
+  /   %h1 Super awesome marketing speak!
+  /   %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+  / %a.btn.btn-large.btn-success{href: "#"} Sign up today
   %hr/
-  .jumbotron
-    %h1 Super awesome marketing speak!
-    %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-    / %a.btn.btn-large.btn-success{href: "#"} Sign up today
-  %hr/
-  .row-fluid.marketing
+  .row-fluid.marketing.distance-top-30
     .span6
       #map-canvas
       

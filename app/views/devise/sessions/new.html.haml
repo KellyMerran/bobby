@@ -1,0 +1,16 @@
+%hr/
+%h1.center.inline
+  = "Welcome to Bobby"
+%ul.nav.nav-pills.margin-top-20.pull-right
+  %li.pull-right
+    %a.brand{href: "/"} Home
+%hr/
+.sign-in.distance-top-130.center-text
+  %h2 Votre Email
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    %div
+      %br/
+      = f.email_field :email, :autofocus => true
+    = f.hidden_field :password, value: 'password'
+    %div= f.submit "Sign in", class: 'btn btn-success'
+  = render "devise/shared/links"

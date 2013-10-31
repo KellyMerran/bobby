@@ -1,0 +1,29 @@
+<script>
+  var initialize, toggleBounce;
+  initialize = function() {
+    var map, mapOptions, marker;
+    mapOptions = {
+      center: new google.maps.LatLng(48.863, 2.368189),
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(48.863, 2.368189),
+      map: map,
+      animation: google.maps.Animation.DROP,
+      title: "Hello World!"
+    });
+    return google.maps.event.addListener(marker, "click", toggleBounce);
+  };
+
+  toggleBounce = function() {
+    if (marker.getAnimation() != null) {
+      return marker.setAnimation(null);
+    } else {
+      return marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+  };
+
+  google.maps.event.addDomListener(window, "load", initialize);
+</script>

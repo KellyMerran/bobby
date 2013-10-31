@@ -18,3 +18,31 @@ hr.black {
 .distance-top-30 {
   padding-top: 30px;
 }
+
+.inline {
+  display: inline-block;
+}
+
+.distance-top-30 {
+  padding-top: 30px;
+}
+
+.distance-top-130 {
+  padding-top: 130px;
+}
+
+.margin-top-20 {
+  margin-top:20px;
+}
+
+li.active:hover {
+  color: green;
+}
+
+li > a:hover {
+    color: black;
+}
+
+.center-text {
+  text-align: center;
+}

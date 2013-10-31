@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 </head>
-<body>
+<body class=<%= 'triangle_background' if @triangle_background %>>
   <%= render 'shared/nav' %>
   <div class='wrapper'>
     <% unless flash['notice'].blank? %>

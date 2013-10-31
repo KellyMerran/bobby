@@ -49,7 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def notify_client_end_of_depot(client)
-    binding.pry
     ClientNotifier.end_of_depot(client).deliver!
   end
 
