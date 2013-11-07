@@ -3,6 +3,7 @@
 <head>
   <title>BobbyStore</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyA9JAHlzo-tYMtwhlttLEW_qqOwmg0rPXY&sensor=true" %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -10,14 +11,16 @@
 </head>
 <body class=<%= 'triangle_background' if @triangle_background %>>
   <%= render 'shared/nav' %>
-  <div class='wrapper'>
-    <% unless flash['notice'].blank? %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% unless flash['alert'].blank? %>  
-      <p class="alert"><%= alert %></p>
-    <% end %>
-    <%= yield %>
+  <div class=<%= 'color-container' if @color_container %>>
+    <div class='wrapper'>
+      <% unless flash['notice'].blank? %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% unless flash['alert'].blank? %>  
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </div>
   </div>
 
 </body>
