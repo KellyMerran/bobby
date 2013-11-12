@@ -1,1 +1,17 @@
-#map-canvas { height: 300px; width: 300px; }
+#map-canvas { height: 150px; width: 150px; }
+
+.login {
+  text-align: right;
+  padding-top: 10px;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.right-panel {
+  padding: 5px 20px;
+  background-color: rgba(49, 47, 47, 0.9);
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#312F2F', EndColorStr='#312F2F');
+}

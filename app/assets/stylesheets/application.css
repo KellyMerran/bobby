@@ -27,3 +27,15 @@ body.triangle_background {
 body {
   color: white !important;
 }
+
+p {
+  font-family: 'neou' !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'neou-bold' !important;
+}
+
+a.brand {
+  color: white;
+}

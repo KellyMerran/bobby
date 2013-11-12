@@ -1,8 +1,9 @@
+.login
+  %a.brand{href: "/users/sign_in"} Mon Compte
 %hr/
-%h1.center.inline.neuton
 = image_tag 'bobby_logo.jpg', width: '900'
 / = "Bobby DEPOT-VENTE"
-%a.brand{href: "/users/sign_in"} Log in
+
 %hr/
 %ul.nav.nav-pills.pull-right
   %li.pull-right
@@ -15,44 +16,48 @@
   
   .row-fluid.marketing.distance-top-30
     .span4
+      %h4 Contact
+      %p 
+        = "Bobby Dépôt-Vente Femme"
+        %br
+        = "9 rue Oberkampf"
+        %br
+        =  "75011"
+        %br
+        = "01 72 38 54 83"
+        %br
+        = "bobbysecondhand@gmail.com"
       #map-canvas
       %hr
-      =  "Mardi-Samedi 11h-20h"
-      %br
-      =  "Métro: Filles du Calvaire, Oberkampf, République"
-      %br
+      %p
+        =  "Mardi-Samedi 11h - 20h"
+        %br
+        =  "Métro: Filles du Calvaire, Oberkampf, République"
+        %br
 
     
     .span6.offset2
       .right-panel
-        %h4 Ce Qu'on Cherche
-        = "-Type de vétements/chaussures/accessoires recherché:"
-        .indent-30
-          = "*récent, à la mode "
-        .indent-70
-          = "OU"
-        .indent-30
-          = "*grand classique"
-        %br
-        =  "-Les vêtements doivent être lavés, repassés et de saison."
+        %h4 WANTED
+        %p
+          = "* Type de vétements/chaussures/accessoires recherché:"
+          %p.indent-30
+            = "*récent, à la mode "
+          %p.indent-70
+            = "OU"
+          %p.indent-30
+            = "*grand classique"
+          %p
+            =  "* Les vêtements doivent être lavés, repassés et de saison."
         %h4 Conditions
         %p 
-        = "-50 % pour vous / 50% pour Bobby"
-        %br
-        = "-La durée des dépôts est de deux mois."
-        %h4 Pour déposer:
-        %p -Dépôts sans rendez-vous du mardi au samedi de 11 h à 20h (éviter l'heure du déjeuner).
-        %h4 Contact
-        %p 
-          = "Bobby Dépôt-Vente Femme"
+          = "* 50 % pour vous / 50% pour Bobby"
           %br
-          = "9 rue Oberkampf"
-          %br
-          =  "75011"
-          %br
-          = "01 72 38 54 83"
-          %br
-          = "bobbysecondhand@gmail.com"
+          = "* La durée des dépôts est de deux mois."
+          %h4 Pour déposer:
+          %p 
+            = "* Dépôts sans rendez-vous du mardi au samedi de 11 h à 20h (éviter l'heure du déjeuner)."
+        
       
   %hr/
   .footer
