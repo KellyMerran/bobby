@@ -6,8 +6,4 @@ class HomeController < ApplicationController
   	@triangle_background=true
   end
 
-  def login
-  	@triangle_background=true
-  end
-
 end

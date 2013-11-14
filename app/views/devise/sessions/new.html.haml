@@ -1,10 +1,12 @@
+.login
+  %a.brand{href: "/"} Home
 %hr/
-%h1.center.inline
-  = "Welcome to Bobby"
-%ul.nav.nav-pills.margin-top-20.pull-right
+= image_tag 'bobby_logo.jpg', width: '900'
+/ = "Bobby DEPOT-VENTE"
+
+%hr/
+%ul.nav.nav-pills.pull-right
   %li.pull-right
-    %a.brand{href: "/"} Home
-%hr/
 .sign-in.distance-top-130.center-text
   %h2 Votre Email
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
