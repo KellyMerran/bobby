@@ -43,7 +43,7 @@ class ClientsController < ApplicationController
   def delete_client
     client = Client.find(params[:client_id])
     client.item_groups.delete_all
-    client.user.delete
+    client.user.delete if client.user
     client.delete
     redirect_to clients_path
   end
