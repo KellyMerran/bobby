@@ -5,7 +5,7 @@ class Devise::SessionsController < DeviseController
 
   # GET /resource/sign_in
   def new
-    @triangle_background=true
+    @image_background=true
     @no_nav = true
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
