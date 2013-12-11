@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
   def delete_item
     item = Item.find(params[:item_id])
     item.delete
-    redirect_to clients_path(client_search: params[:client_search])
+    redirect_to :back
   end
 
   def sell
@@ -27,19 +27,19 @@ class ItemsController < ApplicationController
     if item.item_group.all_sold?
       notify_client_end_of_depot(item.client)
     end
-    redirect_to clients_path(client_search: params[:client_search])
+    redirect_to :back
   end
 
   def unsell
     item = Item.find(params[:item_id])
     item.unsell
-    redirect_to clients_path(client_search: params[:client_search])
+    redirect_to :back
   end
 
   def mark_as_paid
     item = Item.find(params[:item_id])
     item.mark_as_paid(params[:payment_method])
-    redirect_to clients_path(client_search: params[:client_search])
+    redirect_to :back
   end
 
   private

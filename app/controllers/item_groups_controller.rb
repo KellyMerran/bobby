@@ -46,7 +46,7 @@ class ItemGroupsController < ApplicationController
   def delete_item_group
     item = ItemGroup.find(params[:id])
     item.delete
-    redirect_to clients_path
+    redirect_to :back
   end
 
   private

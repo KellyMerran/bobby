@@ -30,8 +30,6 @@ class ClientsController < ApplicationController
     redirect_to clients_path
   end
 
-  
-
   def terms
   	@client = Client.find(params[:client_id])
   end
