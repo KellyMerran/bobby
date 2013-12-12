@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if resource.sign_in_count == 1 && resource.client
       terms_conditions_path(resource.client.id)
     elsif resource.client
-      request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+      request.env['omniauth.origin'] || stored_location_for(resource) || item_groups_path
     else
       clients_path
     end

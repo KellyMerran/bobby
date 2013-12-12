@@ -22,29 +22,10 @@
         = item_group.text_field :begin_date, class: 'datepicker', value: Time.now.strftime('%d-%m-%Y')
       .span6
         = item_group.label :end_date, 'Date fin de dépôt'
-        = item_group.text_field :end_date, class: 'datepicker', value: (Time.now + 60.days).strftime('%d-%m-%Y')
+        = item_group.text_field :end_date, class: 'datepicker', value: (Time.now + 2.months).strftime('%d-%m-%Y')
   %h3 Products
   = link_to add_item_path, remote: :true, f: f, class: 'pull-right' do
     %icon.icon-plus-sign.icon-2x.add-item.no-decoration
   = f.fields_for :item do |item|
-    / .row-fluid
-    /   .span2
-    /     = item.label :brand
-    /     = item.text_field :brand, class: 'input-small'
-    /   .span2
-    /     = item.label :product
-    /     = item.text_field :product, class: 'input-small'
-    /   .span2
-    /     = item.label 'reference'
-    /     = item.text_field :reference, class: 'input-small'
-    /   .span2
-    /     = item.label 'buy'
-    /     = item.text_field :buy_price, class: 'input-small'
-    = render 'item_groups/item_fields' 
-
-    / .row-fluid
-    /   .span6
-    /     = render 'item_fields', f: item
-    /   .span6
-    
+    = render 'item_groups/item_fields'     
   = f.submit :class => "btn btn-large btn-success", value: "Save"

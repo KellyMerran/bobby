@@ -13,6 +13,8 @@ class Client < ActiveRecord::Base
 
   after_save :create_user_account
 
+  scope :notified_depot_end, -> { where(notified_depot_end: true) }
+
   def full_name
   	self.first_name + ' ' + self.last_name
   end

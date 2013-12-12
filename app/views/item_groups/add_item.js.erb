@@ -1,1 +1,27 @@
-$('.item-form').last().append('<%=j render partial: 'item_fields' %>')
+var oldVal = $('.reference').last().val();
+
+$('.item-form')
+  .last()
+  .append("<%= escape_javascript("#{render :partial => 'item_fields'}").html_safe %>");
+
+var numbers = [];
+var letters = [];
+
+if (typeof oldVal != "undefined") {
+  for (var i = 0; i < oldVal.length; i++) {
+    if (oldVal.charAt(i) >= 0 && oldVal.charAt(i) <= 9) {
+      numbers.push(oldVal.charAt(i));
+    } else {
+      letters.push(oldVal.charAt(i));
+    }
+  }
+}
+
+var newVal = (parseInt(numbers.join("")) + 1).toString();
+var newFieldText = letters.join("") + newVal; 
+
+if (newFieldText == "NaN") {
+  var newFieldText = ""
+}
+
+$('.reference').last().val(newFieldText)

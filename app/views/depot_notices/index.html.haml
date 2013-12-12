@@ -1,0 +1,12 @@
+%br
+%h1.center Clients qui ont besoin de venir chercher leur dépôt
+%br
+%br
+%table.table.table-striped
+  - @clients.each do |client|
+    %tr
+      %td
+        = client.first_name
+        = client.last_name
+      %td	
+        = link_to 'envoyer notice', depot_notices_path(client_id: client.id), method: :post

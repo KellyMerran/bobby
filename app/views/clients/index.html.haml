@@ -6,7 +6,7 @@
       - if current_user.admin?
         = form_tag clients_path, class: 'pull-right pull-down', method: :get do
           = text_field_tag :client_search, params[:search], data: { keybinding: '/' }
-          = submit_tag "Search", class: "btn btn-primary client-search"
+          = submit_tag "Chercher", class: "btn btn-primary client-search"
 
 .distance-top-30
   - if @clients
@@ -29,11 +29,11 @@
           .span2.pull-right
             - if i < 1
               %h4 Menu
-              = link_to 'Update customer', edit_client_path(id: group.client.id)
+              = link_to 'Modification Client', edit_client_path(id: group.client.id)
               %br
-              = link_to 'Ajoute dépôt', add_group_to_client_path(client_id: group.client.id)
+              = link_to 'Ajoute un Dépôt', add_group_to_client_path(client_id: group.client.id)
               %br
-              = link_to 'Delete Customer', delete_client_path(client_id: client.id), method: :delete
+              = link_to 'Supprimer Client', delete_client_path(client_id: client.id), method: :delete
             
         %hr
 
@@ -46,23 +46,23 @@
 
                 %td
                   %h6 Date de dépôt
-                  = group.begin_date
+                  = group.begin_date.strftime('%d-%m-%Y')
                 %td
                   %h6 Date fin de dépôt
-                  = group.end_date
+                  = group.end_date.strftime('%d-%m-%Y')
                 %td
                 %td
                 %td
                 %td
                   = link_to 'Supprimer dépôt', delete_item_group_path(id: group.id), method: :post
               %tr
-                %th Brand
-                %th Product
+                %th Marque
+                %th Produit
                 %th Reference
-                %th Buy price
-                %th Sell price
+                %th Prix d'achat
+                %th Prix de vente
                 %th Action
-                %th Delete
+                %th Supprimer
             - group.items.each do |item|  
               - if !item.sold?
                 - next_state_change = link_to 'vendu', sell_item_path(item_id: item.id, client_search: @search), method: :post
@@ -87,7 +87,12 @@
                   = link_to 'X', delete_item_path(item_id: item.id), method: :delete
                 -if item.sold_and_paid
                   %td
-                    = 'paiment en' + ' ' + item.payment_type.to_s
+                    - if item.payment_type == 'check'
+                      = 'cheque le '
+                      = item.payment_date.strftime('%d-%m-%Y') if item.payment_date
+                    - else 
+                      = 'espece le'
+                      = item.payment_date.strftime('%d-%m-%Y') if item.payment_date
                   / = link_to '', item_path(id: item.id, client_search: @search ), data: {toggle: 'modal', target: "#showModal"}, 'data-keyboard' => true, remote: true, class: 'delete-pay-fail icon-book icon-2x no-decoration'
         - if @clients.length > (index + 1)
           %hr.black

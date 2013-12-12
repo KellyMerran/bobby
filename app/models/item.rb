@@ -19,7 +19,7 @@ class Item < ActiveRecord::Base
   end
 
   def mark_as_paid(method)
-  	self.update_attributes(payment: true, payment_type: method)
+  	self.update_attributes(payment: true, payment_type: method, payment_date: Time.now)
   end
 
 end

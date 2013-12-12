@@ -13,6 +13,8 @@ BobbyStore::Application.routes.draw do
 
   resources :item_groups, only: [:new, :create, :index]
 
+  resources :depot_notices, only: [:create, :index]
+
   resources :items, only: [:show, :update]
   post 'items/:item_id/sell' => 'items#sell', as: 'sell_item'
   post 'items/:item_id/unsell' => 'items#unsell', as: 'unsell_item'

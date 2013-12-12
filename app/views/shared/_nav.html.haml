@@ -8,10 +8,12 @@
           %li 
             = link_to 'Clients', clients_path
           %li
-            = link_to 'Add New', new_item_group_path
+            = link_to 'Nouveau Client', new_item_group_path
+          %li
+            = link_to "Dépot notices", depot_notices_path
         - if user_signed_in?
           %li
-            = link_to 'Sign Out', destroy_user_session_path, method: :delete
+            = link_to 'Déconnexion', destroy_user_session_path, method: :delete
         - else
           %li
-            = link_to 'Sign In', new_user_session_path
+            = link_to 'Connexion', new_user_session_path
