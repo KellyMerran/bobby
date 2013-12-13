@@ -3,7 +3,7 @@ class ClientNotifier < ActionMailer::Base
 
   def end_of_depot(client)
     @client = client
-    mail to: "mackmcconnell@gmail.com", reply_to: "bobbyinfos@gmail.com", subject: "FIN DE VOTRE DEPOT"
+    mail to: client.email, reply_to: "bobbyinfos@gmail.com", subject: "FIN DE VOTRE DEPOT"
   end
 
 end
